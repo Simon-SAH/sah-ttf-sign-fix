@@ -1,0 +1,51 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+base {
+    archivesName = 'sah-ttf-sign-fix'
+}
+
+repositories {
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+}
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "sah_ttf_sign_fix" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    clientCompileOnly "maven.modrinth:YL57xq9U:oaD6KQls"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+jar {
+    from("LICENSE") {
+        rename { "${it}_sah_ttf_sign_fix" }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.sah.ttfsignfix.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "IrisExtendedShaderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "sah_ttf_sign_fix",
+  "version": "${version}",
+  "name": "SAH TTF Sign Fix",
+  "description": "Fixes TTF font rendering on signs when using Iris shaders in Minecraft 26.2 and 26.3.",
+  "authors": [
+    "Simon / SAH Project"
+  ],
+  "license": "MIT",
+  "icon": "assets/sah_ttf_sign_fix/icon.png",
+  "environment": "client",
+
+  "entrypoints": {
+    "client": [
+      "com.sah.ttfsignfix.SahTtfSignFixClient"
+    ]
+  },
+
+  "mixins": [
+    {
+      "config": "sah_ttf_sign_fix.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": ">=26.2 <26.4",
+    "java": ">=25",
+    "iris": ">=1.11.2"
+  }
+}
